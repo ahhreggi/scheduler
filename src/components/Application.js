@@ -23,6 +23,7 @@ const days = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
+  // const [name, setInterviewer] = useState("Sylvia Palmer");
 
   return (
     <main className="layout">
