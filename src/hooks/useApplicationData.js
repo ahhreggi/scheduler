@@ -8,14 +8,14 @@ export default function useApplicationData() {
     days: [],
     appointments: {},
     interviewers: {},
-  })
+  });
 
   useEffect(() => {
     const API = {
       GET_DAYS: "http://localhost:8001/api/days",
       GET_APPOINTMENTS: "http://localhost:8001/api/appointments",
       GET_INTERVIEWERS: "http://localhost:8001/api/interviewers",
-    }
+    };
 
     Promise.all([
       axios.get(API.GET_DAYS),
@@ -23,10 +23,10 @@ export default function useApplicationData() {
       axios.get(API.GET_INTERVIEWERS)
     ])
       .then(all => {
-        const [days, appointments, interviewers] = all.map(e => e.data)
-        setState(prev => ({ ...prev, days, appointments, interviewers }))
-      })
-  }, [])
+        const [days, appointments, interviewers] = all.map(e => e.data);
+        setState(prev => ({ ...prev, days, appointments, interviewers }));
+      });
+  }, []);
 
   const setDay = day => setState(prev => ({ ...prev, day }));
 
@@ -40,12 +40,12 @@ export default function useApplicationData() {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam) // transition(ERROR_SAVE)
+        callback(errParam); // transition(ERROR_SAVE)
       });
   }
 
   function cancelInterview(id, callback, resParam, errParam) {
-    const appointment = { ...state.appointments[id], interview: null }
+    const appointment = { ...state.appointments[id], interview: null };
     const appointments = { ...state.appointments, [id]: appointment };
     axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
@@ -54,7 +54,7 @@ export default function useApplicationData() {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam, true) // transition(ERROR_DELETE, true)
+        callback(errParam, true); // transition(ERROR_DELETE, true)
       });
   }
 

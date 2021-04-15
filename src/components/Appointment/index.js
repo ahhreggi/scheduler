@@ -26,22 +26,22 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  function save(name, interviewer) {
+  const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer
     };
     transition(SAVING);
     props
-      .bookInterview(props.id, interview, transition, SHOW, ERROR_SAVE)
-      // .then(() => transition(SHOW))
-      // .catch(error => transition(ERROR_SAVE));
-  }
+      .bookInterview(props.id, interview, transition, SHOW, ERROR_SAVE);
+    // .then(() => transition(SHOW))
+    // .catch(error => transition(ERROR_SAVE));
+  };
 
-  function destroy() {
+  const destroy = () => {
     transition(DELETING, true);
     props.cancelInterview(props.id, transition, EMPTY, ERROR_DELETE);
-  }
+  };
 
   return (
     <article className="appointment">
@@ -95,6 +95,6 @@ export default function Appointment(props) {
         <Error message="Could not save appointment." onClose={() => back()} />
       )}
     </article>
-  )
+  );
 
-};
+}

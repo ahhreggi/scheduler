@@ -52,7 +52,7 @@ storiesOf("DayListItem", module) //Initiates Storybook and registers our DayList
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
     <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
-));
+  ));
 
 // =================================================================
 // DayList
@@ -206,4 +206,4 @@ storiesOf("Appointment", module)
   .add("Error: Saving", () => <Error message="Could not save appointment." onClose={action("onClose")} />)
   .add("Error: Deleting", () => <Error message="Could not delete appointment." onClose={action("onClose")} />)
   .add("Form: Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
-  .add("Form: Edit", () => <Form name="Maria Regina Sirilan" interviewer={3} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
+  .add("Form: Edit", () => <Form name="Maria Regina Sirilan" interviewer={3} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />);

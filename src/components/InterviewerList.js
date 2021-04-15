@@ -1,7 +1,7 @@
 import React from "react";
 import "./InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default function InterviewerList(props) {
 
@@ -19,8 +19,8 @@ export default function InterviewerList(props) {
         selected={interviewer.id === props.value}
         setInterviewer={() => props.onChange(interviewer.id)}
       />
-    )
-  })
+    );
+  });
 
   return (
     <section className="interviewers">
@@ -29,6 +29,6 @@ export default function InterviewerList(props) {
         {interviewers}
       </ul>
     </section>
-  )
+  );
 
 }
