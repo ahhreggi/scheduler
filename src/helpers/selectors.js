@@ -1,4 +1,4 @@
-export default function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay(state, day) {
   // Retrieve the data for the given day from state.days
   const dayData = state.days.filter(dayObj => dayObj.name === day)
   // If there is no data for the given day, return an empty array

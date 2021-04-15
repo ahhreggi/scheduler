@@ -5,7 +5,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment"
 
-import getAppointmentsForDay from "../helpers/selectors";
+import { getAppointmentsForDay } from "../helpers/selectors";
 
 const API = {
   GET_DAYS: "http://localhost:8001/api/days",
