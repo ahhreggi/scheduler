@@ -19,13 +19,6 @@ export default function Application(props) {
     console.log(id, interview);
   }
 
-  function save(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-  }
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
