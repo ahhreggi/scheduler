@@ -45,9 +45,12 @@ const appointments = [
 ];
 
 export default function Application(props) {
-  const [days, setDays] = useState([]);
-  const [day, setDay] = useState("Monday");
   const [name, setInterviewer] = useState("Sylvia Palmer");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {}
+  })
   const schedule = appointments.map(appointment => {
     return <Appointment key={appointment.id} {...appointment} />
   })
@@ -62,6 +65,9 @@ export default function Application(props) {
       });
   }, [])
 
+  const setDay = day => setState(prev => ({ ...state, day }));
+  const setDays = days => setState(prev => ({ ...state, days }));
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -73,8 +79,8 @@ export default function Application(props) {
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
         <DayList
-          days={days}
-          day={day}
+          days={state.days}
+          day={state.day}
           setDay={setDay}
         />
       </nav>
