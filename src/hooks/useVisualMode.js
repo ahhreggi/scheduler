@@ -9,7 +9,7 @@ export default function useVisualMode(initial) {
       // If replace is true, replace the current mode in history
       // Otherwise, add it normally as a new mode in history
       if (replace) {
-        prev = prev.slice(0, prev.length - 1);
+        prev = prev.slice(0, -1);
       }
       return [...prev, newMode];
     })

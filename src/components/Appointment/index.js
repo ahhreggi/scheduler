@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.scss";
+
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
@@ -8,7 +9,6 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 import useVisualMode from "../../hooks/useVisualMode";
-import axios from "axios";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
