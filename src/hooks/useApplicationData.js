@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useApplicationData() {
+export const useApplicationData = () => {
 
   const [state, setState] = useState({
     day: "Monday",
@@ -30,7 +30,7 @@ export default function useApplicationData() {
 
   const setDay = day => setState(prev => ({ ...prev, day }));
 
-  function bookInterview(id, interview, callback, resParam, errParam) {
+  const bookInterview = (id, interview, callback, resParam, errParam) => {
     const appointment = { ...state.appointments[id], interview: { ...interview } };
     const appointments = { ...state.appointments, [id]: appointment };
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
@@ -42,9 +42,9 @@ export default function useApplicationData() {
         console.error(err);
         callback(errParam); // transition(ERROR_SAVE)
       });
-  }
+  };
 
-  function cancelInterview(id, callback, resParam, errParam) {
+  const cancelInterview = (id, callback, resParam, errParam) => {
     const appointment = { ...state.appointments[id], interview: null };
     const appointments = { ...state.appointments, [id]: appointment };
     axios.delete(`http://localhost:8001/api/appointments/${id}`)
@@ -56,7 +56,7 @@ export default function useApplicationData() {
         console.error(err);
         callback(errParam, true); // transition(ERROR_DELETE, true)
       });
-  }
+  };
 
   return {
     state,
@@ -65,4 +65,4 @@ export default function useApplicationData() {
     cancelInterview
   };
 
-}
+};
