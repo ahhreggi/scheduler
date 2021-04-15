@@ -20,6 +20,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    props.bookInterview(props.id, interview);
   }
 
   const { mode, transition, back } = useVisualMode(
@@ -40,7 +41,7 @@ export default function Appointment(props) {
         <Form
         interviewers={[]}
         onCancel={back}
-        onSave={"onSave"}
+        onSave={save}
         />
       )}
     </article>
