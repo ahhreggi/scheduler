@@ -15,26 +15,32 @@ const API = {
 
 export default function Application(props) {
 
-  function bookInterview(id, interview, callback, params) {
+  function bookInterview(id, interview, callback, resParam, errParam) {
     const appointment = { ...state.appointments[id], interview: { ...interview } };
     const appointments = { ...state.appointments, [id]: appointment };
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
         setState({ ...state, appointments });
-        callback(params); // transition(SHOW)
+        callback(resParam); // transition(SHOW)
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        callback(errParam)
+      });
   }
 
-  function cancelInterview(id, callback, params) {
+  function cancelInterview(id, callback, resParam, errParam) {
     const appointment = { ...state.appointments[id], interview: null }
     const appointments = { ...state.appointments, [id]: appointment };
     axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
         setState({ ...state, appointments });
-        callback(params); // transition(SHOW)
+        callback(resParam); // transition(SHOW)
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        callback(errParam)
+      });
   }
 
   const [state, setState] = useState({
