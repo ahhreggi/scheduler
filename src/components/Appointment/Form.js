@@ -43,7 +43,7 @@ export default function Form(props) {
               This must be a controlled component
             */
           />
-          <section className="appointment__validation"></section>
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />
       </section>

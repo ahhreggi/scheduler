@@ -3,5 +3,20 @@
   "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "react/prop-types": "off"
   }
 }
