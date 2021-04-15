@@ -14,6 +14,18 @@ const API = {
 }
 
 export default function Application(props) {
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
+
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  }
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
