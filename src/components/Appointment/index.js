@@ -13,6 +13,7 @@ import axios from "axios";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
 
@@ -21,8 +22,8 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    props.bookInterview(props.id, interview);
-    transition(SHOW);
+    transition(SAVING)
+    props.bookInterview(props.id, interview, transition, SHOW)
   }
 
   const { mode, transition, back } = useVisualMode(
@@ -41,9 +42,14 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && (
         <Form
-        interviewers={props.interviewers}
-        onCancel={back}
-        onSave={save}
+          interviewers={props.interviewers}
+          onCancel={back}
+          onSave={save}
+        />
+      )}
+      {mode === SAVING && (
+        <Status
+          message="Saving"
         />
       )}
     </article>

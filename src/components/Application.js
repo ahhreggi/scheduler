@@ -15,7 +15,7 @@ const API = {
 
 export default function Application(props) {
 
-  function bookInterview(id, interview) {
+  function bookInterview(id, interview, callback, params) {
     console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
@@ -26,7 +26,11 @@ export default function Application(props) {
       [id]: appointment
     };
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
-      .then(setState({ ...state, appointments }))
+      .then(() => {
+        setState({ ...state, appointments });
+        callback(params); // transition(SHOW)
+      })
+      .catch(err => console.error(err));
   }
 
   const [state, setState] = useState({
