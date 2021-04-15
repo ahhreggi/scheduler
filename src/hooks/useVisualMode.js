@@ -19,7 +19,7 @@ export default function useVisualMode(initial) {
   function back() {
     if (history.length === 1) return;
     const newHistory = history.slice(0, history.length - 1);
-    setHistory([...newHistory]);
+    setHistory(prev => [...newHistory]);
     setMode(history[history.length - 2]);
   }
 

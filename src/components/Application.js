@@ -25,7 +25,7 @@ export default function Application(props) {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam)
+        callback(errParam) // transition(ERROR_SAVE)
       });
   }
 
@@ -39,7 +39,7 @@ export default function Application(props) {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam)
+        callback(errParam, true) // transition(ERROR_DELETE, true)
       });
   }
 
