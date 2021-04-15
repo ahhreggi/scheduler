@@ -5,44 +5,13 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment"
 
-const appointments = [
-  {
-    id: 1,
-    time: "12pm",
-  },
-  {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  {
-    id: 3,
-    time: "2pm",
-  },
-  {
-    id: 4,
-    time: "3pm",
-    interview: {
-      student: "Maria Regina Sirilan",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  {
-    id: 5,
-    time: "4pm",
-  },
-];
+import getAppointmentsForDay from "../helpers/selectors";
+
+const API = {
+  GET_DAYS: "http://localhost:8001/api/days",
+  GET_APPOINTMENTS: "http://localhost:8001/api/appointments",
+  GET_INTERVIEWERS: "http://localhost:8001/api/interviewers",
+}
 
 export default function Application(props) {
   const [name, setInterviewer] = useState("Sylvia Palmer");
@@ -51,22 +20,26 @@ export default function Application(props) {
     days: [],
     appointments: {}
   })
-  const schedule = appointments.map(appointment => {
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+
+  const schedule = dailyAppointments.map(appointment => {
     return <Appointment key={appointment.id} {...appointment} />
   })
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:8001/api/days"
-    })
-      .then(response => {
-        setDays(response.data)
-      });
+    Promise.all([
+      axios.get(API.GET_DAYS),
+      axios.get(API.GET_APPOINTMENTS),
+      axios.get(API.GET_INTERVIEWERS)
+    ])
+      .then(all => {
+        const [days, appointments] = all.map(e => e.data)
+        setState(prev => ({ ...prev, days, appointments }))
+      })
   }, [])
 
-  const setDay = day => setState(prev => ({ ...state, day }));
-  const setDays = days => setState(prev => ({ ...state, days }));
+  const setDay = day => setState(prev => ({ ...prev, day }));
 
   return (
     <main className="layout">
