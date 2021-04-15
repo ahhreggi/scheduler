@@ -16,16 +16,20 @@ const API = {
 export default function Application(props) {
 
   function bookInterview(id, interview, callback, params) {
-    console.log(id, interview);
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
+    const appointment = { ...state.appointments[id], interview: { ...interview } };
+    const appointments = { ...state.appointments, [id]: appointment };
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
+      .then(() => {
+        setState({ ...state, appointments });
+        callback(params); // transition(SHOW)
+      })
+      .catch(err => console.error(err));
+  }
+
+  function cancelInterview(id, callback, params) {
+    const appointment = { ...state.appointments[id], interview: null }
+    const appointments = { ...state.appointments, [id]: appointment };
+    axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
         setState({ ...state, appointments });
         callback(params); // transition(SHOW)
@@ -53,6 +57,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
