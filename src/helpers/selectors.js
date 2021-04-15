@@ -10,3 +10,16 @@ export function getAppointmentsForDay(state, day) {
   // Return an array of appointments from state.appointments with the IDs in appIDs
   return appIDs.map(id => state.appointments[id])
 }
+
+export function getInterview(state, interview) {
+  // If there is no data for the given interview, return null
+  if (!interview) {
+    return null;
+  }
+  // Return a new interview object with the interviewer object from state.interviewers
+  const newInterview = {
+    ...interview,
+    interviewer: {...state.interviewers[interview.interviewer]}
+  }
+  return newInterview;
+}
