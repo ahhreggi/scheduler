@@ -1,14 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
+import {
+  reducer,
+  SET_DAY,
+  SET_APPLICATION_DATA,
+  SET_INTERVIEW,
+  UPDATE_SPOTS
+} from "../helpers/reducer";
 
 export const useApplicationData = () => {
 
-  const [state, setState] = useState({
+  const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: {},
+    interviewers: {}
   });
+
+  const setDay = day => dispatch({ type: SET_DAY, value: day });
 
   useEffect(() => {
     const API = {
@@ -23,24 +32,24 @@ export const useApplicationData = () => {
       axios.get(API.GET_INTERVIEWERS)
     ])
       .then(all => {
-        const [days, appointments, interviewers] = all.map(e => e.data);
-        setState(prev => ({ ...prev, days, appointments, interviewers }));
+        dispatch({ type: SET_APPLICATION_DATA, value: all });
       });
   }, []);
-
-  const setDay = day => setState(prev => ({ ...prev, day }));
 
   const bookInterview = (id, interview, callback, resParam, errParam) => {
     const appointment = { ...state.appointments[id], interview: { ...interview } };
     const appointments = { ...state.appointments, [id]: appointment };
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({ ...state, appointments });
+        dispatch({ type: SET_INTERVIEW, value: appointments });
+      })
+      .then(() => {
+        dispatch({ type: UPDATE_SPOTS });
         callback(resParam); // transition(SHOW)
       })
       .catch(err => {
         console.error(err);
-        callback(errParam); // transition(ERROR_SAVE)
+        callback(errParam, true); // transition(ERROR_SAVE, true)
       });
   };
 
@@ -49,7 +58,10 @@ export const useApplicationData = () => {
     const appointments = { ...state.appointments, [id]: appointment };
     axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
-        setState({ ...state, appointments });
+        dispatch({ type: SET_INTERVIEW, value: appointments });
+      })
+      .then(() => {
+        dispatch({ type: UPDATE_SPOTS });
         callback(resParam); // transition(SHOW)
       })
       .catch(err => {
