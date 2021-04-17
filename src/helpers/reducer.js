@@ -7,7 +7,6 @@ export const UPDATE_SPOTS = "UPDATE_SPOTS";
 export const reducer = (state, action) => {
 
   const setSpots = () => {
-
     let spots = 5;
     for (const day in state.days) { /* eslint-disable-line */
       if (state.days[day].name === state.day) {
@@ -18,14 +17,12 @@ export const reducer = (state, action) => {
         }
       }
     }
-
     return state.days.map(day => {
       if (day.name !== state.day) {
         return day;
       }
       return { ...day, spots };
     });
-
   };
 
   switch (action.type) {
