@@ -8,7 +8,7 @@ import {
   UPDATE_SPOTS
 } from "../helpers/reducer";
 
-export const useApplicationData = () => {
+export default function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
@@ -77,4 +77,4 @@ export const useApplicationData = () => {
     cancelInterview
   };
 
-};
+}
