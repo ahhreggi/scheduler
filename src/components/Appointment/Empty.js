@@ -1,6 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Empty(props) {
+
+  Empty.propTypes = {
+    onAdd: PropTypes.func.isRequired
+  };
 
   return (
     <main className="appointment__add">
