@@ -1,6 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Status(props) {
+
+  Status.propTypes = {
+    message: PropTypes.string.isRequired
+  };
 
   return (
     <main className="appointment__card appointment__card--status">
