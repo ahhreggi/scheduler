@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-
 import InterviewerList from "../InterviewerList";
 import Button from "../Button";
+import PropTypes from "prop-types";
 
 export default function Form(props) {
+
+  Form.propTypes = {
+    name: PropTypes.string.isRequired,
+    interviewer: PropTypes.number.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    interviewers: PropTypes.array.isRequired
+  };
 
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
