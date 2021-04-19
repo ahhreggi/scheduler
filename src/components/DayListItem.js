@@ -12,6 +12,7 @@ export default function DayListItem(props) {
     name: PropTypes.string.isRequired
   };
 
+  // Return a descriptive representation for the given number of spots
   const formatSpots = (spots) => {
     let str = "";
     if (!spots) {

@@ -17,6 +17,7 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  // Check that a student name is provided
   const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -26,11 +27,13 @@ export default function Form(props) {
     props.onSave(name, interviewer);
   };
 
+  // Reset the form
   const reset = () => {
     setName("");
     setInterviewer(null);
   };
 
+  // Cancel changes
   const cancel = () => {
     reset();
     props.onCancel();
@@ -48,9 +51,6 @@ export default function Form(props) {
             value={name}
             onChange={event => setName(event.target.value)}
             data-testid="student-name-input"
-            /*
-              This must be a controlled component
-            */
           />
           <section className="appointment__validation">{error}</section>
         </form>

@@ -13,7 +13,7 @@ export default function Button(props) {
     children: PropTypes.string.isRequired
   };
 
-  let buttonClass = classNames("button", {
+  const buttonClass = classNames("button", {
     "button--confirm": props.confirm,
     "button--danger": props.danger
   });
