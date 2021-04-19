@@ -1,8 +1,16 @@
 import React from "react";
 import "components/DayListItem.scss";
 import classNames from "classnames/bind";
+import PropTypes from "prop-types";
 
 export default function DayListItem(props) {
+
+  DayListItem.propTypes = {
+    selected: PropTypes.bool.isRequired,
+    spots: PropTypes.number.isRequired,
+    setDay: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired
+  };
 
   const formatSpots = (spots) => {
     let str = "";
