@@ -1,6 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Show(props) {
+
+  Show.propTypes = {
+    student: PropTypes.string.isRequired,
+  };
+  console.log(typeof interviewer);
 
   return (
     <main className="appointment__card appointment__card--show">

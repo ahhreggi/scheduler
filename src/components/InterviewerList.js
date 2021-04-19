@@ -7,7 +7,7 @@ export default function InterviewerList(props) {
 
   InterviewerList.propTypes = {
     interviewers: PropTypes.array.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired
   };
 

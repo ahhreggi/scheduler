@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
 export default function Button(props) {
 
   Button.propTypes = {
-    confirm: PropTypes.bool.isRequired,
-    danger: PropTypes.bool.isRequired,
+    confirm: PropTypes.bool,
+    danger: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
-    disabled: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool,
     children: PropTypes.string.isRequired
   };
 

@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
 export default function Form(props) {
 
   Form.propTypes = {
-    name: PropTypes.string.isRequired,
-    interviewer: PropTypes.number.isRequired,
-    onSave: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
+    name: PropTypes.string,
+    interviewer: PropTypes.number,
+    onSave: PropTypes.func,
+    onCancel: PropTypes.func,
     interviewers: PropTypes.array.isRequired
   };
 
