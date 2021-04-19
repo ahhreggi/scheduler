@@ -6,23 +6,18 @@ export const UPDATE_SPOTS = "UPDATE_SPOTS";
 
 export const reducer = (state, action) => {
 
-  const setSpots = () => {
-    let spots = 5;
+  const updateSpots = (state) => {
+    let spots = 0;
     for (const day in state.days) { /* eslint-disable-line */
       if (state.days[day].name === state.day) {
         for (const id of state.days[day].appointments) {  /* eslint-disable-line */
-          if (state.appointments[id].interview !== null) {
-            spots--;
+          if (state.appointments[id].interview === null) {
+            spots++;
           }
         }
       }
     }
-    return state.days.map(day => {
-      if (day.name !== state.day) {
-        return day;
-      }
-      return { ...day, spots };
-    });
+    return state.days.map(day => day.name !== state.day ? day : { ...day, spots });
   };
 
   switch (action.type) {
@@ -35,7 +30,7 @@ export const reducer = (state, action) => {
     return { ...state, days, appointments, interviewers };
   }
   case SET_INTERVIEW:
-    return { ...state, appointments: action.value, days: setSpots() };
+    return { ...state, appointments: action.value, days: updateSpots(state) };
   case UPDATE_INTERVIEW: {
     const newAppointment = {
       ...state.appointments[action.value.id],
@@ -48,7 +43,7 @@ export const reducer = (state, action) => {
     return { ...state, appointments: newAppointments };
   }
   case UPDATE_SPOTS:
-    return { ...state, days: setSpots() };
+    return { ...state, days: updateSpots(state) };
   default:
     throw new Error(
       `Tried to reduce with unsupported action type: ${action.type}`
