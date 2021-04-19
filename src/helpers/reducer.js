@@ -17,7 +17,8 @@ export const reducer = (state, action) => {
         }
       }
     }
-    return state.days.map(day => day.name !== state.day ? day : { ...day, spots });
+    // If the day is the current day, update spots, otherwise leave it unchanged
+    return state.days.map(day => day.name === state.day ? { ...day, spots } : day);
   };
 
   switch (action.type) {
