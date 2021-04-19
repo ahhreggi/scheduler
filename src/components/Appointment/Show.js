@@ -5,8 +5,10 @@ export default function Show(props) {
 
   Show.propTypes = {
     student: PropTypes.string.isRequired,
+    interviewer: PropTypes.object.isRequired,
+    onEdit: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
   };
-  console.log(typeof interviewer);
 
   return (
     <main className="appointment__card appointment__card--show">
