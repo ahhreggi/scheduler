@@ -1,6 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Header(props) {
+
+  Header.propTypes = {
+    time: PropTypes.string.isRequired
+  };
 
   return (
     <header className="appointment__time">
