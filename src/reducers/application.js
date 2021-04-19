@@ -6,6 +6,7 @@ export const UPDATE_SPOTS = "UPDATE_SPOTS";
 
 export const reducer = (state, action) => {
 
+  // Update the number of spots for the given state
   const updateSpots = (state) => {
     let spots = 0;
     for (const day in state.days) { /* eslint-disable-line */

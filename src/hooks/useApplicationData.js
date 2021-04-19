@@ -6,7 +6,7 @@ import {
   SET_APPLICATION_DATA,
   SET_INTERVIEW,
   UPDATE_SPOTS
-} from "../helpers/reducer";
+} from "../reducers/application";
 
 export default function useApplicationData() {
 
