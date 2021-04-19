@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 export default function DayListItem(props) {
 
   DayListItem.propTypes = {
-    selected: PropTypes.bool.isRequired,
+    selected: PropTypes.bool,
     spots: PropTypes.number.isRequired,
-    setDay: PropTypes.func.isRequired,
+    setDay: PropTypes.func,
     name: PropTypes.string.isRequired
   };
 

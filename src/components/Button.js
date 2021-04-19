@@ -8,7 +8,7 @@ export default function Button(props) {
   Button.propTypes = {
     confirm: PropTypes.bool,
     danger: PropTypes.bool,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     disabled: PropTypes.bool,
     children: PropTypes.string.isRequired
   };
