@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 export default function InterviewerList(props) {
 
   InterviewerList.propTypes = {
-    value: PropTypes.number,
+    interviewers: PropTypes.array.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired
   };
 
