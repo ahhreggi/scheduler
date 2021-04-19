@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.scss";
+import PropTypes from "prop-types";
 
 import Header from "./Header";
 import Show from "./Show";
@@ -21,6 +22,15 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
+
+  Appointment.propTypes = {
+    interview: PropTypes.object,
+    bookInterview: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    cancelInterview: PropTypes.func.isRequired,
+    time: PropTypes.string.isRequired,
+    interviewers: PropTypes.array.isRequired
+  };
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
