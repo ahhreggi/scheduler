@@ -1,6 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Error(props) {
+
+  Error.propTypes = {
+    message: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired
+  };
 
   return (
     <main className="appointment__card appointment__card--error">
