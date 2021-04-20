@@ -1,9 +1,17 @@
 import React from "react";
-
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
-
+import {
+  render,
+  cleanup,
+  waitForElement,
+  fireEvent,
+  getByText,
+  getAllByTestId,
+  getByAltText,
+  getByPlaceholderText,
+  queryByText,
+  queryByAltText
+} from "@testing-library/react";
 import Application from "components/Application";
-
 import axios from "axios";
 
 afterEach(cleanup);
@@ -11,8 +19,9 @@ afterEach(cleanup);
 describe("Application", () => {
 
   it("defaults to Monday and changes the schedule when a new day is selected", () => {
-    const { getByText } = render(<Application />);
-
+    const {
+      getByText
+    } = render( < Application / > );
     return waitForElement(() => getByText("Monday"))
       .then(() => {
         fireEvent.click(getByText("Tuesday"));
@@ -20,9 +29,11 @@ describe("Application", () => {
       });
   });
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async() => {
+  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container } = render(<Application />);
+    const {
+      container
+    } = render( < Application / > );
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
     // 3. Click the "Add" button on the first empty appointment.
@@ -31,7 +42,9 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Add"));
     // 4. Enter the name "Lydia Miller-Jones" into the input with the placeholder "Enter Student Name".
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
-      target: { value: "Lydia Miller-Jones" }
+      target: {
+        value: "Lydia Miller-Jones"
+      }
     });
     // 5. Click the first interviewer in the list.
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
@@ -48,9 +61,11 @@ describe("Application", () => {
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
-  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async() => {
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container } = render(<Application />);
+    const {
+      container
+    } = render( < Application / > );
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
     // 3. Click the "Delete" button on the booked appointment.
