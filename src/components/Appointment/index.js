@@ -25,11 +25,11 @@ export default function Appointment(props) {
 
   Appointment.propTypes = {
     interview: PropTypes.object,
-    bookInterview: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
-    cancelInterview: PropTypes.func.isRequired,
+    bookInterview: PropTypes.func,
+    id: PropTypes.number,
+    cancelInterview: PropTypes.func,
     time: PropTypes.string.isRequired,
-    interviewers: PropTypes.array.isRequired
+    interviewers: PropTypes.array
   };
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);

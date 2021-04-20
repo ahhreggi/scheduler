@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-import {
-  reducer,
+import reducer, {
   SET_DAY,
   SET_APPLICATION_DATA,
   SET_INTERVIEW,
@@ -21,9 +20,9 @@ export default function useApplicationData() {
 
   useEffect(() => {
     const API = {
-      GET_DAYS: "http://localhost:8001/api/days",
-      GET_APPOINTMENTS: "http://localhost:8001/api/appointments",
-      GET_INTERVIEWERS: "http://localhost:8001/api/interviewers",
+      GET_DAYS: "/api/days",
+      GET_APPOINTMENTS: "/api/appointments",
+      GET_INTERVIEWERS: "/api/interviewers",
     };
 
     Promise.all([
@@ -39,7 +38,7 @@ export default function useApplicationData() {
   const bookInterview = (id, interview, callback, resParam, errParam) => {
     const appointment = { ...state.appointments[id], interview: { ...interview } };
     const appointments = { ...state.appointments, [id]: appointment };
-    axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
+    axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
         dispatch({ type: SET_INTERVIEW, value: appointments });
       })
@@ -49,20 +48,20 @@ export default function useApplicationData() {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam, true); // transition(ERROR_SAVE, true)
+        callback(errParam); // transition(ERROR_SAVE, true)
       });
   };
 
   const cancelInterview = (id, callback, resParam, errParam) => {
     const appointment = { ...state.appointments[id], interview: null };
     const appointments = { ...state.appointments, [id]: appointment };
-    axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    axios.delete(`/api/appointments/${id}`)
       .then(() => {
         dispatch({ type: SET_INTERVIEW, value: appointments });
       })
       .then(() => {
         dispatch({ type: UPDATE_SPOTS });
-        callback(resParam); // transition(SHOW)
+        callback(resParam, true); // transition(SHOW)
       })
       .catch(err => {
         console.error(err);

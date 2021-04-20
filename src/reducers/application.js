@@ -4,7 +4,7 @@ export const SET_INTERVIEW = "SET_INTERVIEW";
 export const UPDATE_INTERVIEW = "UPDATE_INTERVIEW";
 export const UPDATE_SPOTS = "UPDATE_SPOTS";
 
-export const reducer = (state, action) => {
+export default function reducer(state, action) {
 
   // Update the number of spots for the given state
   const updateSpots = (state) => {
