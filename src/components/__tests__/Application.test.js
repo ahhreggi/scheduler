@@ -9,6 +9,7 @@ import axios from "axios";
 afterEach(cleanup);
 
 describe("Application", () => {
+
   it("defaults to Monday and changes the schedule when a new day is selected", () => {
     const { getByText } = render(<Application />);
 
@@ -45,6 +46,7 @@ describe("Application", () => {
 
     expect(getByText(day, "4 spots remaining")).toBeInTheDocument();
   });
+
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
   // 1. Render the Application.
   const { container } = render(<Application />);
@@ -80,6 +82,7 @@ describe("Application", () => {
 
   expect(getByText(day, "5 spots remaining")).toBeInTheDocument();
   });
+
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
      const { container, debug } = render(<Application />);
      await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -102,4 +105,5 @@ describe("Application", () => {
   it("shows the delete error when failing to delete an existing appointment", () => {
     axios.put.mockRejectedValueOnce();
   })
+
 })
