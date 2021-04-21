@@ -50,6 +50,7 @@ export default function Appointment(props) {
     props.cancelInterview(props.id, transition, EMPTY, ERROR_DELETE);
   };
 
+  // Transition to the correct mode when the value of interview changes
   useEffect(() => {
     if (props.interview && mode === EMPTY) {
       transition(SHOW);
