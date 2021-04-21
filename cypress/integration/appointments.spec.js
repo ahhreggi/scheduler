@@ -42,4 +42,21 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
 
+  it("should cancel an interview", () => {
+    // Click the delete button for the existing appointment
+    cy.get("[alt=Delete]")
+      .first()
+      .click({ force: true })
+    // Click the confirm button in the confirmation window
+    cy.contains("Confirm").click();
+    // Check that the "Deleting" indicator exists (in progress)
+    cy.contains("Deleting").should("exist");
+    // Check that the "Deleting" indicator does not exist anymore (done)
+    cy.contains("Deleting").should("not.exist");
+    // Check that the appointment__card--show element that contains the text "Archie Cohen"
+    // no longer exists
+    cy.contains(".appointment__card--show", "Archie Cohen")
+      .should("not.exist");
+  })
+
 })
