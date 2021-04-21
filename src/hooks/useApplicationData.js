@@ -48,7 +48,7 @@ export default function useApplicationData() {
       })
       .catch(err => {
         console.error(err);
-        callback(errParam); // transition(ERROR_SAVE, true)
+        callback(errParam, true); // transition(ERROR_SAVE, true)
       });
   };
 
@@ -61,7 +61,7 @@ export default function useApplicationData() {
       })
       .then(() => {
         dispatch({ type: UPDATE_SPOTS });
-        callback(resParam, true); // transition(SHOW)
+        callback(resParam); // transition(SHOW)
       })
       .catch(err => {
         console.error(err);
