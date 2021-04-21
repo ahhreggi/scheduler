@@ -32,7 +32,7 @@ export default function reducer(state, action) {
     return { ...state, days, appointments, interviewers };
   }
   case SET_INTERVIEW:
-    return { ...state, appointments: action.value, days: updateSpots(state) };
+    return { ...state, appointments: action.value ? action.value : state.appointments, days: updateSpots(state) };
   case UPDATE_INTERVIEW: {
     const newAppointment = {
       ...state.appointments[action.value.id],

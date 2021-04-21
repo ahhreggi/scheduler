@@ -19,6 +19,19 @@ export default function useApplicationData() {
   const setDay = day => dispatch({ type: SET_DAY, value: day });
 
   useEffect(() => {
+
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    webSocket.onopen = function() {
+      webSocket.send("ping");
+    };
+
+    webSocket.onmessage = function(event) {
+      const data = JSON.parse(event.data);
+      if (data.type) {
+        dispatch(data);
+      }
+    };
+
     const API = {
       GET_DAYS: "/api/days",
       GET_APPOINTMENTS: "/api/appointments",
@@ -33,6 +46,7 @@ export default function useApplicationData() {
       .then(all => {
         dispatch({ type: SET_APPLICATION_DATA, value: all });
       });
+
   }, []);
 
   const bookInterview = (id, interview, callback, resParam, errParam) => {
