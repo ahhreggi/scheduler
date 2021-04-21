@@ -1,13 +1,34 @@
-# 📅 Interview Scheduler
+<!-- TITLE -->
+<div align="center">
+📅
+<h1>Interview Scheduler</h1>
+<p>A full-stack application for scheduling interviews
+</p>
 
-<b>Interview Scheduler</b> is a front-end React application that allows users to book and cancel interviews.
+<p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://reactjs.org/">ReactJS</a>, CSS/<a href="https://sass-lang.com/">SASS</a>, and hosted with <a href="https://www.heroku.com/">Heroku</a> & <a href="https://www.netlify.com/">Netlify</a></p>
 
-Built with [React](https://reactjs.org/) and CSS/<a href="https://sass-lang.com/">SASS</a>. Tested using [Jest](https://jestjs.io/[) and [Storybook](https://storybook.js.org/).
+<b><a href="https://happy-hodgkin-6bbd5a.netlify.app/" target="_blank">
+   » View Live Demo «
+</a></b>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+## 📚 Introduction
+
+<b>[Interview Scheduler](https://happy-hodgkin-6bbd5a.netlify.app/)</b> is a full-stack, single-page React application that allows users to book and cancel interviews.
+
+## ⚛️ Tech Usages
+
+- <b>Development</b>: <a href="https://reactjs.org/">ReactJS</a>, CSS/<a href="https://sass-lang.com/">SASS</a>, <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>
+- <b>Tools & Testing</b>: <a href="https://storybook.js.org/">Storybook<a/>, <a href="https://jestjs.io/">Jest</a>, <a href="https://www.cypress.io/">Cypress</a>
+- <b>Deployment</b>: <a href="https://www.heroku.com/">Heroku</a> (database API), <a href="https://circleci.com/">CircleCI</a> (continuous integration), <a href="https://www.netlify.com/">Netlify</a> (production client)
 
 ## 🛠 Installation
 
 The project is live
-<b><a href="https://inquizitor-app.herokuapp.com/" target="_blank">here</a></b>, but if you would prefer a local installation:
+<b><a href="https://happy-hodgkin-6bbd5a.netlify.app/" target="_blank">here</a></b>, but if you would prefer a local installation:
 
 1. Clone or download this repository
    ```
@@ -24,19 +45,23 @@ The project is live
    ```
 5. Visit <a href="http://localhost:8000/">http://localhost:8000/</a> on your browser
 
-## ✔️ Testing (Jest, Storybook)
+## ✔️ Tools & Testing (Storybook, Jest, Cypress)
 
-1. Run the Jest test framework
+1. Run the Storybook visual testbed
+   ```
+   npm run storybook
+   ```
+2. Run the Jest test framework
    ```
    npm test
    ```
-2. Run the Storybook visual testbed
+3. Run the Cypress test runner
    ```
-   npm run storybook
+   npm run cypress
    ```
 
 ## 📷 Screenshots
 
-<img src="public/images/screenshot1.png" alt="screenshot" />
-<img src="public/images/screenshot2.png" alt="screenshot" />
-<img src="public/images/screenshot3.png" alt="screenshot" />
+<img src="public/images/create.png" alt="Create Interview" />
+<img src="public/images/saving.png" alt="Saving Interview" />
+<img src="public/images/added.png" alt="Added Interview" />
