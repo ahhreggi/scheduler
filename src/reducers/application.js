@@ -23,8 +23,8 @@ export default function reducer(state, action) {
   };
 
   switch (action.type) {
-  // case SET_DAY:
-  //   return { ...state, day: action.value };
+  case SET_DAY:
+    return { ...state, day: action.value };
   case SET_APPLICATION_DATA: {
     const days = action.value[0].data;
     const appointments = action.value[1].data;
