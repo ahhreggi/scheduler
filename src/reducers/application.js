@@ -31,9 +31,9 @@ export default function reducer(state, action) {
     const interviewers = action.value[2].data;
     return { ...state, days, appointments, interviewers };
   }
-  case SET_INTERVIEW:
+  case SET_INTERVIEW: {
     let appointments = { ...state.appointments };
-    // If a value is provided, set appointments to the updated appointments object
+    // If a value is provided, replace appointments with the updated appointments object
     if (action.value) {
       appointments = action.value;
       // Otherwise, if an interview id is provided, update its interview
@@ -41,6 +41,7 @@ export default function reducer(state, action) {
       appointments[action.id].interview = action.interview;
     }
     return { ...state, appointments, days: updateSpots(state) };
+  }
   case UPDATE_INTERVIEW: {
     const newAppointment = {
       ...state.appointments[action.value.id],

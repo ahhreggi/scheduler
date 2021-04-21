@@ -23,9 +23,6 @@
       "version": "detect"
     }
   },
-  "rules": {
-    "react/prop-types": "off"
-  },
   "globals": {
     "cy": true
   }
