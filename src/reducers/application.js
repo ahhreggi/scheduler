@@ -32,7 +32,15 @@ export default function reducer(state, action) {
     return { ...state, days, appointments, interviewers };
   }
   case SET_INTERVIEW:
-    return { ...state, appointments: action.value ? action.value : state.appointments, days: updateSpots(state) };
+    let appointments = { ...state.appointments };
+    // If a value is provided, set appointments to the updated appointments object
+    if (action.value) {
+      appointments = action.value;
+      // Otherwise, if an interview id is provided, update its interview
+    } else if (action.id) {
+      appointments[action.id].interview = action.interview;
+    }
+    return { ...state, appointments, days: updateSpots(state) };
   case UPDATE_INTERVIEW: {
     const newAppointment = {
       ...state.appointments[action.value.id],
