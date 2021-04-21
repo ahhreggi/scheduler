@@ -17,7 +17,7 @@
 
 ## 📚 Introduction
 
-<b>[Interview Scheduler](https://happy-hodgkin-6bbd5a.netlify.app/)</b> is a full-stack, single-page React application that allows users to book and cancel interviews.
+<b>[Interview Scheduler](https://happy-hodgkin-6bbd5a.netlify.app/)</b> is a full-stack, single-page React application that allows users to book and cancel interviews. [WebSockets](https://javascript.info/websocket) are used to enable continuous data exchange between all concurrent clients and the server, allowing users to see schedule changes made by other users in real-time without reload.
 
 ## ⚛️ Tech Usages
 
