@@ -19,7 +19,7 @@ afterEach(cleanup);
 describe("Application", () => {
 
   it("defaults to Monday and changes the schedule when a new day is selected", () => {
-    const { getByText } = render( < Application / > );
+    const { getByText } = render(< Application / >);
     return waitForElement(() => getByText("Monday"))
       .then(() => {
         fireEvent.click(getByText("Tuesday"));
@@ -27,9 +27,9 @@ describe("Application", () => {
       });
   });
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
+  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async() => {
     // 1. Render the Application.
-    const { container } = render( < Application / > );
+    const { container } = render(< Application / >);
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
     // 3. Click the "Add" button on the first empty appointment.
@@ -57,9 +57,9 @@ describe("Application", () => {
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
-  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async() => {
     // 1. Render the Application.
-    const { container } = render( < Application / > );
+    const { container } = render(< Application / >);
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
     // 3. Click the "Delete" button on the booked appointment.

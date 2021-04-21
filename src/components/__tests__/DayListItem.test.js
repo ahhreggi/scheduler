@@ -25,4 +25,4 @@ describe("DayListItem", () => {
     expect(getByText("2 spots remaining")).toBeInTheDocument();
   });
 
-})
+});
