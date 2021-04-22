@@ -1,7 +1,8 @@
 <!-- TITLE -->
 <div align="center">
-📅
-<h1>Interview Scheduler</h1>
+<h1>
+<img src="public/images/logo.png" alt="Interview Scheduler" />
+</h1>
 <p>A full-stack application for scheduling interviews
 </p>
 
