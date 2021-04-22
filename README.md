@@ -1,14 +1,16 @@
 <!-- TITLE -->
 <div align="center">
 <h1>
+<a href="https://ahhreggi-scheduler.netlify.app/">
 <img src="public/images/logo.png" alt="Interview Scheduler" />
+<a>
 </h1>
 <p>A full-stack application for scheduling interviews
 </p>
 
 <p>Built with <a href="https://nodejs.org/en/">Node.js</a>, <a href="https://expressjs.com/">Express</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://reactjs.org/">ReactJS</a>, CSS/<a href="https://sass-lang.com/">SASS</a>, and hosted with <a href="https://www.heroku.com/">Heroku</a> & <a href="https://www.netlify.com/">Netlify</a></p>
 
-<b><a href="https://happy-hodgkin-6bbd5a.netlify.app/" target="_blank">
+<b><a href="https://ahhreggi-scheduler.netlify.app/" target="_blank">
    » View Live Demo «
 </a></b>
 
@@ -18,7 +20,7 @@
 
 ## 📚 Introduction
 
-<b>[Interview Scheduler](https://happy-hodgkin-6bbd5a.netlify.app/)</b> is a full-stack, single-page React application that allows users to book and cancel interviews. [WebSockets](https://javascript.info/websocket) are used to enable continuous data exchange between all concurrent clients and the server, allowing users to see schedule changes made by other users in real-time without reload.
+<b>[Interview Scheduler](https://ahhreggi-scheduler.netlify.app/)</b> is a full-stack, single-page React application that allows users to book and cancel interviews. [WebSockets](https://javascript.info/websocket) are used to enable continuous data exchange between all concurrent clients and the server, allowing users to see schedule changes made by other users in real-time without reload.
 
 ## ⚛️ Tech Usages
 
@@ -29,7 +31,7 @@
 ## 🛠 Installation
 
 The project is live
-<b><a href="https://happy-hodgkin-6bbd5a.netlify.app/" target="_blank">here</a></b>, but if you would prefer a local installation:
+<b><a href="https://ahhreggi-scheduler.netlify.app/" target="_blank">here</a></b>, but if you would prefer a local installation:
 
 1. Clone or download this repository
    ```
