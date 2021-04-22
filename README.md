@@ -37,20 +37,16 @@ The project is live
    ```
    git clone https://github.com/ahhreggi/scheduler
    ```
-2. Clone or download the [API repository](https://github.com/ahhreggi/scheduler-api)
-   ```
-   git clone https://github.com/ahhreggi/scheduler-api
-   ```
-3. Install dependencies and start the API server
-   ```
-   cd scheduler-api
-   npm install
-   npm start
-   ```
-5. Install dependencies and start the webpack development server
+2. Set up and run the scheduler API server
+   - See [README](https://github.com/ahhreggi/scheduler-api)
+
+5. Navigate to the project directory and install dependencies
    ```
    cd scheduler
    npm install
+   ```
+6. Run the webpack development server
+   ```
    npm start
    ```
 7. Visit <a href="http://localhost:8000/">http://localhost:8000/</a> on your browser
