@@ -60,8 +60,7 @@ export default function useApplicationData() {
         dispatch({ type: UPDATE_SPOTS });
         callback(resParam); // transition(SHOW)
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
         callback(errParam, true); // transition(ERROR_SAVE, true)
       });
   };
@@ -77,8 +76,7 @@ export default function useApplicationData() {
         dispatch({ type: UPDATE_SPOTS });
         callback(resParam); // transition(SHOW)
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
         callback(errParam, true); // transition(ERROR_DELETE, true)
       });
   };
